@@ -20,7 +20,12 @@ El sistema debe integrarse en C# y presentar las siguientes opciones:
 2. **Impacto:** Determina si el contenido es de impacto Bajo, Medio o Alto según su producción, duración oprime time.
 3. **Decisión Final:** El sistema dictamina entre Publicar, Publicar con ajustes, Enviar a revisión o Rechazar, mostrando siempre la razón del resultado.
 
-# Diagramas de flujo
+# Diagrama de flujo Principal
+
+<img width="4520" height="8192" alt="Evaluación de Contenido y-2026-03-24-013711" src="https://github.com/user-attachments/assets/f5ad37f4-e6a6-40f1-a5cd-4c3c9f96de69" />
+
+##  Diagramas de flujo individual
+
 <details>
 <summary>📸 Ver Flujo Principal</summary>
 <p align="center">
