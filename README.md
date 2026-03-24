@@ -19,3 +19,36 @@ El sistema debe integrarse en C# y presentar las siguientes opciones:
 1. **Validación Técnica:** Verifica que la duración coincida con el tipo de contenido (ej. Película: 60-180 min) y que la clasificación sea apta para el horario (ej. +18: entre 22 y 5 horas).
 2. **Impacto:** Determina si el contenido es de impacto Bajo, Medio o Alto según su producción, duración oprime time.
 3. **Decisión Final:** El sistema dictamina entre Publicar, Publicar con ajustes, Enviar a revisión o Rechazar, mostrando siempre la razón del resultado.
+
+# Diagramas de flujo
+<details>
+<summary>📸 Ver Flujo Principal</summary>
+<p align="center">
+<img src="Diagramas/FLUJO%20PRINCIPAL%20–%20SIMULADOR%20DE%20STREAMING.png" width="400" alt="Flujo Principal">
+</p>
+</details>
+
+<details>
+<summary>📸 Ver Subflujo: Evaluar Contenido</summary>
+<p align="center">
+<img src="Diagramas/SUBFLUJO%20EVALUAR%20CONTENIDO-opción1.png" width="400" alt="Evaluar Contenido">
+</p>
+</details>
+
+<details>
+<summary>⚙️ Ver Funciones de Validación (Horario, Duración y Producción)</summary>
+<p align="center">
+<img src="Diagramas/FUNCION%20ValidarHorario.png" width="350" alt="Validar Horario">
+<img src="Diagramas/Funcion%20ValidarDuracion%20.png" width="350" alt="Validar Duración">
+<img src="Diagramas/Funcion%20ValidarProduccion.png" width="350" alt="Validar Producción">
+</p>
+</details>
+
+<details>
+<summary>📊 Ver Lógica de Impacto y Decisión Final</summary>
+<p align="center">
+<img src="Diagramas/Funcion%20CalcularImpacto.png" width="350" alt="Calcular Impacto">
+<img src="Diagramas/Funcion%20DecisionFinal.png" width="350" alt="Decisión Final">
+<img src="Diagramas/Flujo%20final.png" width="350" alt="Flujo Final">
+</p>
+</details>
