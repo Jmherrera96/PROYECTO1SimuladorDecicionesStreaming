@@ -30,6 +30,7 @@ class SimuladorStreaming
             switch (menu)
             {
                 case 1:  // ingreso de el contenido 
+                    evaluados++;   // Contador de entradas evaluadas
                     Console.WriteLine("--- INGRESAR CONTENIDO ---");
                     Console.Write("Nombre del contenido: ");
                     string nombre = Console.ReadLine();
