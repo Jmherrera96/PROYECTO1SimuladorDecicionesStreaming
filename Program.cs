@@ -3,16 +3,18 @@ class SimuladorStreaming
 {
     static void Main()
     {
-        int evaluados = 0;
-        int publicados = 0;
-        int pubAjustes = 0;
-        int revision = 0;
-        int rechazados = 0;
+        int evaluados = 0; // Total de contenidos evaluados
+        int publicados = 0; // Publicados sin ajustes
+        int pubAjustes = 0; // Publicados con ajustes
+        int revision = 0; // Enviados a revisión
+        int rechazados = 0; // Rechazados por incumplir reglas
+
+        // Contadores de impacto
         int impAlto = 0;
         int impMedio = 0;
         int impBajo = 0;
 
-        int menu;
+        int menu; // Variable para el menu
         do
         {
             Console.WriteLine("       SIMULADOR DE STREAMING");
@@ -27,8 +29,7 @@ class SimuladorStreaming
 
             switch (menu)
             {
-                case 1:
-                    // imprime titulo y pide el nombre
+                case 1:  // ingreso de el contenido 
                     Console.WriteLine("--- INGRESAR CONTENIDO ---");
                     Console.Write("Nombre del contenido: ");
                     string nombre = Console.ReadLine();
@@ -137,8 +138,6 @@ class SimuladorStreaming
                         }
                     }
 
-
-
                     // si paso todas las pruebas calcula que tan importante es
                     if (valido == false)
                     {
@@ -166,9 +165,36 @@ class SimuladorStreaming
                         }
 
                         Console.WriteLine("Decision: " + decision);
+
+                        // Actualizar contadores de impacto
+                        if (impacto == 3)
+                        {
+                            impAlto++;
+                        }
+                        else if (impacto == 2)
+                        {
+                            impMedio++;
+                        }
+                        else
+                        {
+                            impBajo++;
+                        }
+                          
+                        // Actualizar contadores de decisión
+                        if (decision == "Publicar")
+                        {
+                            publicados++;
+                        }
+                        else if (decision == "Enviar a revision")
+                        {
+                            revision++;
+                        }
+                        else
+                        {
+                            pubAjustes++;
+                        }
                     }
                     break;
-
                 case 2:
                     // Mostrar reglas
                     MostrarReglas();
