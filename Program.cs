@@ -227,7 +227,6 @@ class SimuladorStreaming
                     Console.WriteLine("Estadisticas reiniciadas.");
                     break;
                 case 5:
-                case 5:
                     Console.WriteLine("=== RESUMEN FINAL ===");
                     Console.WriteLine("Total evaluados       : " + evaluados);
                     Console.WriteLine("Publicados            : " + publicados);
@@ -264,9 +263,7 @@ class SimuladorStreaming
                         }
                         Console.WriteLine("Impacto predominante  : " + predominanteFinal);
                     }
-
                     Console.WriteLine("Gracias por usar el simulador. Hasta luego.");
-                    break;
                     break;
                 default:
                     Console.WriteLine("Opcion invalida. Ingrese un numero del 1 al 5.");
