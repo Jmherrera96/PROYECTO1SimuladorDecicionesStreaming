@@ -66,4 +66,57 @@ class SimuladorStreaming
         Console.WriteLine("  Enviar a revision  : impacto alto");
         Console.WriteLine("  Rechazar           : incumple regla obligatoria");
     }
+    static bool ValidarHorario(int clasificacion, int hora)
+    {
+        bool resultado = true;
+        if (clasificacion == 13)
+        {
+            if (hora < 6 || hora > 22)
+            {
+                resultado = false;
+            }
+        }
+        else if (clasificacion == 18)
+        {
+            if (hora >= 6 && hora <= 21)
+            {
+                resultado = false;
+            }
+        }
+        return resultado;
+    }
+    static bool ValidarDuracion(int tipo, int duracion)
+    {
+        bool resultado = false;
+
+        if (tipo == 1) // Pelicula
+        {
+            if (duracion >= 60 && duracion <= 180)
+            {
+                resultado = true;
+            }
+        }
+        else if (tipo == 2) // Serie
+        {
+            if (duracion >= 20 && duracion <= 90)
+            {
+                resultado = true;
+            }
+        }
+        else if (tipo == 3) // Documental
+        {
+            if (duracion >= 30 && duracion <= 120)
+            {
+                resultado = true;
+            }
+        }
+        else if (tipo == 4) // Evento en vivo
+        {
+            if (duracion >= 30 && duracion <= 240)
+            {
+                resultado = true;
+            }
+        }
+        return resultado;
+    }
 }
