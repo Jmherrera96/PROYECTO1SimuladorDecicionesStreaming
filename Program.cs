@@ -131,4 +131,107 @@ class SimuladorStreaming
 
         return resultado;
     }
+    static int CalcularImpacto(int produccion, int duracion, int hora)
+    {
+        int impacto;
+
+        // Primero verificar impacto alto
+        if (produccion == 3 || duracion > 120 || (hora >= 20 && hora <= 23))
+        {
+            impacto = 3; // Alto
+        }
+        else if (produccion == 2 || (duracion >= 60 && duracion <= 120))
+        {
+            impacto = 2; // Medio
+        }
+        else
+        {
+            impacto = 1; // Bajo
+        }
+
+        return impacto;
+    }
+    static string DecisionFinal(int impacto, int duracion, int hora, int clasificacion, int tipo)
+    {
+        string decision;
+        string razon = "";
+
+        if (impacto == 3)
+        {
+            decision = "Enviar a revision";
+        }
+        else
+        {
+            // Verificar duracion limite
+            if (tipo == 1)
+            {
+                if (duracion == 60 || duracion == 180)
+                {
+                    razon = "duracion limite";
+                }
+            }
+            else if (tipo == 2)
+            {
+                if (duracion == 20 || duracion == 90)
+                {
+                    razon = "duracion limite";
+                }
+            }
+            else if (tipo == 3)
+            {
+                if (duracion == 30 || duracion == 120)
+                {
+                    razon = "duracion limite";
+                }
+            }
+            else // tipo == 4
+            {
+                if (duracion == 30 || duracion == 240)
+                {
+                    razon = "duracion limite";
+                }
+            }
+
+            // Verificar horario limite
+            if (clasificacion == 13)
+            {
+                if (hora == 6 || hora == 22)
+                {
+                    if (razon != "")
+                    {
+                        razon = razon + " y horario limite";
+                    }
+                    else
+                    {
+                        razon = "horario limite";
+                    }
+                }
+            }
+            else if (clasificacion == 18)
+            {
+                if (hora == 22 || hora == 5)
+                {
+                    if (razon != "")
+                    {
+                        razon = razon + " y horario limite";
+                    }
+                    else
+                    {
+                        razon = "horario limite";
+                    }
+                }
+            }
+
+            if (razon != "")
+            {
+                decision = "Publicar con ajustes: " + razon;
+            }
+            else
+            {
+                decision = "Publicar";
+            }
+        }
+
+        return decision;
+    }
 }
