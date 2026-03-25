@@ -51,7 +51,7 @@ Esta opcion finalizara el programa.
 - [Podcast 3](https://github.com/user-attachments/assets/3e2d2e12-cb3d-48d7-860d-d2d02d2b9802) 
 - [Podcast 4](https://github.com/user-attachments/assets/a8265b06-b17e-404f-a5a6-b04dace81a08)
 
-# Diagrama de flujos
+## Diagrama de flujos
 <details> 
 <summary>Funciones de Validación (Horario, Duración y Producción)</summary>
 <div align="center">
@@ -89,5 +89,38 @@ Esta opcion finalizara el programa.
     <br>
     Diagrama: Decisión Final
   </p>
+</div>
+</details>
+
+## Casos de Prueba y Errores
+<details>
+<summary>Tabla de valores de prueba</summary>
+<div align="center">
+<br></br>
+  
+| ID | Tipo | Duración | Clasif. | Hora | Prod. | Válido? | Impacto | Decisión |
+|:--:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| 1 | Pelicula | 120 | Todo público | 12 | Medio | ✅ Sí | Medio | Publicar |
+| 2 | Serie | 45 | +13 | 8 | Bajo | ✅ Sí | Bajo | Publicar |
+| 3 | Doc. | 90 | +18 | 23 | Alto | ❌ No | - | Rechazado (Horario) |
+| 4 | Evento | 240 | +13 | 22 | Medio | ✅ Sí | Medio | Publicar (Ajustes) |
+| 5 | Pelicula | 60 | Todo público | 6 | Alto | ✅ Sí | Alto | Enviar a revision |
+| 6 | Serie | 20 | +13 | 6 | Bajo | ✅ Sí | Bajo | Publicar (Ajustes) |
+| 7 | Doc. | 30 | +18 | 22 | Medio | ✅ Sí | Medio | Publicar (Ajustes) |
+| 8 | Evento | 30 | Todo público | 23 | Alto | ✅ Sí | Alto | Enviar a revision |
+| 9 | Pelicula | 180 | +13 | 5 | Bajo | ❌ No | - | Rechazado (Horario) |
+| 10 | Serie | 200 | +18 | 1 | Medio | ❌ No | - | Rechazado (Duración) |
+| 11 | Pelicula | 50 | Todo público | 10 | Bajo | ❌ No | - | Rechazado (Duración) |
+| 12 | Doc. | 150 | +18 | 23 | Alto | ❌ No | - | Rechazado (Duración) |
+| 13 | Evento | 500 | +13 | 12 | Medio | ❌ No | - | Rechazado (Duración) |
+| 14 | Serie | 90 | +18 | 22 | Bajo | ❌ No | - | Rechazado (Prod. Baja) |
+| 15 | Pelicula | 180 | +13 | 6 | Bajo | ✅ Sí | Bajo | Publicar (Ajustes) |
+| 16 | Doc. | 120 | Todo público | 5 | Alto | ✅ Sí | Alto | Enviar a revision |
+| 17 | Evento | 120 | +18 | 5 | Medio | ✅ Sí | Medio | Publicar |
+| 18 | Pelicula | 61 | +13 | 21 | Medio | ✅ Sí | Medio | Publicar |
+| 19 | Serie | 30 | Todo público | 14 | Medio | ✅ Sí | Medio | Publicar |
+| 20 | Doc. | 31 | +13 | 7 | Bajo | ✅ Sí | Bajo | Publicar |
+
+<i>Datos generados por gemini para ver rendimiento del programa</i>
 </div>
 </details>
