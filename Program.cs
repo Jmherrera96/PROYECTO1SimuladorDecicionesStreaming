@@ -119,4 +119,16 @@ class SimuladorStreaming
         }
         return resultado;
     }
+    static bool ValidarProduccion(int produccion, int clasificacion)
+    {
+        bool resultado = true;
+
+        // Si producción es baja (1) y clasificación es +18 (18), no es válido
+        if (produccion == 1 && clasificacion == 18)
+        {
+            resultado = false;
+        }
+
+        return resultado;
+    }
 }
