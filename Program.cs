@@ -19,8 +19,140 @@ class SimuladorStreaming
             switch (menu)
             {
                 case 1:
+                    // imprime titulo y pide el nombre
                     Console.WriteLine("--- INGRESAR CONTENIDO ---");
-                    // Entrada de datos
+                    Console.Write("Nombre del contenido: ");
+                    string nombre = Console.ReadLine();
+
+                    int tipo;
+                    do
+                    {
+                        // pide tipo y repite si no es de 1 a 4
+                        Console.Write("Tipo: 1) Pelicula 2) Serie 3) Documental 4) Evento");
+                        tipo = int.Parse(Console.ReadLine());
+                        if (tipo < 1 || tipo > 4)
+                        {
+                            Console.WriteLine("Opcion invalida, intente nuevamente.");
+                        }
+                    } while (tipo < 1 || tipo > 4);
+
+                    int duracion;
+                    do
+                    {
+                        // pide minutos y no deja pasar si es 0 o menos
+                        Console.Write("Duracion del contenido en minutos?");
+                        duracion = int.Parse(Console.ReadLine());
+                        if (duracion <= 0)
+                        {
+                            Console.WriteLine("La duracion debe ser mayor a 0.");
+                        }
+                    } while (duracion <= 0);
+
+                    int opClas;
+                    do
+                    {
+                        // pide clasificacion del 1 al 3
+                        Console.Write("Clasificacion: 1) Todo publico  2) +13  3) +18");
+                        opClas = int.Parse(Console.ReadLine());
+                        if (opClas < 1 || opClas > 3)
+                        {
+                            Console.WriteLine("Opcion invalida, intente nuevamente.");
+                        }
+                    } while (opClas < 1 || opClas > 3);
+
+                    int clasificacion;
+                    // convierte la opcion a numero de edad real
+                    if (opClas == 1)
+                    {
+                        clasificacion = 0;
+                    }
+                    else if (opClas == 2)
+                    {
+                        clasificacion = 13;
+                    }
+                    else
+                    {
+                        clasificacion = 18;
+                    }
+
+                    int hora;
+                    do
+                    {
+                        // pide hora militar entre 0 y 23
+                        Console.Write("Hora programada (0 a 23): ");
+                        hora = int.Parse(Console.ReadLine());
+                        if (hora < 0 || hora > 23)
+                        {
+                            Console.WriteLine("Hora invalida, ingrese entre 0 y 23.");
+                        }
+                    } while (hora < 0 || hora > 23);
+
+                    int produccion;
+                    do
+                    {
+                        // pide nivel de calidad 1 a 3
+                        Console.Write("Nivel de produccion (1=Bajo  2=Medio  3=Alto): ");
+                        produccion = int.Parse(Console.ReadLine());
+                        if (produccion < 1 || produccion > 3)
+                        {
+                            Console.WriteLine("Opcion invalida, intente nuevamente.");
+                        }
+                    } while (produccion < 1 || produccion > 3);
+
+                    // variable para saber si todo esta bien
+                    bool valido = true;
+
+                    // revisa si la edad y hora coinciden
+                    if (ValidarHorario(clasificacion, hora) == false)
+                    {
+                        valido = false;
+                        Console.WriteLine("RECHAZADO: horario no permitido para esa clasificacion.");
+                    }
+
+                    // revisa si el tiempo de video es correcto segun el tipo
+                    if (valido == true)
+                    {
+                        if (ValidarDuracion(tipo, duracion) == false)
+                        {
+                            valido = false;
+                            Console.WriteLine("RECHAZADO: duracion fuera de rango para ese tipo.");
+                        }
+                    }
+
+                    // revisa que no sea produccion barata si es para adultos
+                    if (valido == true)
+                    {
+                        if (ValidarProduccion(produccion, clasificacion) == false)
+                        {
+                            valido = false;
+                            Console.WriteLine("RECHAZADO: prod. baja no permitida en clasificacion +18.");
+                        }
+                    }
+
+                    // si paso todas las pruebas calcula que tan importante es
+                    if (valido == true)
+                    {
+                        int impacto = CalcularImpacto(produccion, duracion, hora);
+                        string decision = DecisionFinal(impacto, duracion, hora, clasificacion, tipo);
+
+                        Console.WriteLine($"--- RESULTADO: {nombre} ---");
+
+                        // muestra el nivel de impacto con texto
+                        if (impacto == 1)
+                        {
+                            Console.WriteLine("Impacto : Bajo");
+                        }
+                        else if (impacto == 2)
+                        {
+                            Console.WriteLine("Impacto : Medio");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Impacto : Alto");
+                        }
+
+                        Console.WriteLine($"Decision: {decision}");
+                    }
                     break;
                 case 2:
                     // Mostrar reglas
