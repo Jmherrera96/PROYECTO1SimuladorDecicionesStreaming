@@ -2,60 +2,31 @@
 
 El programa simula una consola donde el equipo de una plataforma de streaming analiza solicitudes de contenido una por una para decidir qué materiales pueden publicarse semanalmente. El sistema no almacena listas; evalúa cada solicitud en el momento y mantiene estadísticas generales de la sesión.
 
-### Requisitos Técnicos
-* Implementación de estructuras `switch`, `do-while`, `while`, `for`, `if/else` encadenados e `if` anidados.
-* Organización del código en funciones.
-* Prohibición del uso de arreglos o listas.
+Manual de Usuario:
+para iniciar se le mostrará un menu con lo siguiente:
+"Simulador de Streaming"
+1 evaluar nuevo contenido
+2 ver reglas 
+3 mostrar estadisticas
+4 reiniciar estadisticas
+5 salir
+ingrese opcion:
 
-## Funcionamiento y Menú
-El sistema debe integrarse en C# y presentar las siguientes opciones:
-* **Evaluar nuevo contenido:** Solicita tipo (película, serie, documental, evento en vivo), duración, clasificación (todo público, +13, +18), hora programada y nivel de producción.
-* **Mostrar reglas del sistema:** Describe las reglas obligatorias de validación técnica.
-* **Mostrar estadísticas:** Incluye total de evaluados, publicados, rechazados, en revisión, impacto predominante y porcentaje de aprobación.
-* **Reiniciar estadísticas**.
-* **Salir:** Muestra un resumen final de la sesión.
+para ingresar una opcion el usuario tiene que ingresar el numero de la opcion que quiera escoger. 
+opción 1: ingresar contenido; el usuario ingresará el nombre del contenido que quiera subir; seguido se le pedirá el tipo
+1 para película; 2 para serie; 3 para documental; y 4 pare evento 
+despues se le pedira que ingrese la duración en minutos del contenido que quiera subir.
+se le pedira que ingrese el tipo de contenido que quiere subir: 1 para contenido apto para todo publico; 2 para contenido
+apto para mayores de 13 años; y 3 para contenido solo para mayores de 18 años.
+Se le pedira la hora a la que piensa subir el contenido en formato de 24 horas.
+y de ultimo el nivel de producción: 1 para bajo; 2 para medio; y 3 para alto.
 
-### Reglas de Validación y Decisión
-1. **Validación Técnica:** Verifica que la duración coincida con el tipo de contenido (ej. Película: 60-180 min) y que la clasificación sea apta para el horario (ej. +18: entre 22 y 5 horas).
-2. **Impacto:** Determina si el contenido es de impacto Bajo, Medio o Alto según su producción, duración oprime time.
-3. **Decisión Final:** El sistema dictamina entre Publicar, Publicar con ajustes, Enviar a revisión o Rechazar, mostrando siempre la razón del resultado.
+despues de esto se le mostrará la desición tomada al usuario sobre la publicación de su contenido. 
 
-# Diagrama de flujo Principal
+al pasar esta parte se le volverá a mostrar el menu principal.
 
-<img width="4520" height="8192" alt="Evaluación de Contenido y-2026-03-24-013711" src="https://github.com/user-attachments/assets/f5ad37f4-e6a6-40f1-a5cd-4c3c9f96de69" />
+opcion 2( ver reglas): al ingresar esta opción se le desplegarán todas las normas establecidas para la publicación de un video, por que serán rechazados y por que se pondran en lista de espera.
 
-##  Diagramas de flujo individual
-
-<details>
-<summary>📸 Ver Flujo Principal</summary>
-<p align="center">
-<img src="Diagramas/FLUJO%20PRINCIPAL%20–%20SIMULADOR%20DE%20STREAMING.png" width="400" alt="Flujo Principal">
-</p>
-</details>
-
-<details>
-<summary>📸 Ver Subflujo: Evaluar Contenido</summary>
-<p align="center">
-<img src="Diagramas/SUBFLUJO%20EVALUAR%20CONTENIDO-opción1.png" width="400" alt="Evaluar Contenido">
-</p>
-</details>
-
-<details>
-<summary>⚙️ Ver Funciones de Validación (Horario, Duración y Producción)</summary>
-<p align="center">
-<img src="Diagramas/FUNCION%20ValidarHorario.png" width="350" alt="Validar Horario">
-<img src="Diagramas/Funcion%20ValidarDuracion%20.png" width="350" alt="Validar Duración">
-<img src="Diagramas/Funcion%20ValidarProduccion.png" width="350" alt="Validar Producción">
-</p>
-</details>
-
-<details>
-<summary>📊 Ver Lógica de Impacto y Decisión Final</summary>
-<p align="center">
-<img src="Diagramas/Funcion%20CalcularImpacto.png" width="350" alt="Calcular Impacto">
-<img src="Diagramas/Funcion%20DecisionFinal.png" width="350" alt="Decisión Final">
-<img src="Diagramas/Flujo%20final.png" width="350" alt="Flujo Final">
-</p>
-</details>
-
-# Podcasts 
+Opción 3 (Mostrar estadísticas): esta opcion le muestra al usuario todas las estadísticas disponibles sobre las desiciones que se han tomado, cuantos videos se han aceptado, cuantos han sido puestos en espera y cuantos se han rechazado. 
+Opcion 4 (reiniciar estadísticas): con esta opcion el usuario vaciara las estadisticas del programa iniciando la cuenta de cero. 
+Opcion 5 (salir): esta opcion finalizará el programa. 
