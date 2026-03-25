@@ -3,6 +3,15 @@ class SimuladorStreaming
 {
     static void Main()
     {
+        int evaluados = 0;
+        int publicados = 0;
+        int pubAjustes = 0;
+        int revision = 0;
+        int rechazados = 0;
+        int impAlto = 0;
+        int impMedio = 0;
+        int impBajo = 0;
+
         int menu;
         do
         {
@@ -23,7 +32,6 @@ class SimuladorStreaming
                     Console.WriteLine("--- INGRESAR CONTENIDO ---");
                     Console.Write("Nombre del contenido: ");
                     string nombre = Console.ReadLine();
-
                     int tipo;
                     do
                     {
@@ -129,13 +137,19 @@ class SimuladorStreaming
                         }
                     }
 
+
+
                     // si paso todas las pruebas calcula que tan importante es
-                    if (valido == true)
+                    if (valido == false)
+                    {
+                        rechazados = rechazados + 1;
+                    }
+                    else
                     {
                         int impacto = CalcularImpacto(produccion, duracion, hora);
                         string decision = DecisionFinal(impacto, duracion, hora, clasificacion, tipo);
 
-                        Console.WriteLine($"--- RESULTADO: {nombre} ---");
+                        Console.WriteLine("--- RESULTADO: ---");
 
                         // muestra el nivel de impacto con texto
                         if (impacto == 1)
@@ -151,21 +165,108 @@ class SimuladorStreaming
                             Console.WriteLine("Impacto : Alto");
                         }
 
-                        Console.WriteLine($"Decision: {decision}");
+                        Console.WriteLine("Decision: " + decision);
                     }
                     break;
+
                 case 2:
                     // Mostrar reglas
                     MostrarReglas();
                     break;
                 case 3:
-                    // Mostrar estadísticas
+                // Mostrar estadísticas
+                    Console.WriteLine("ESTADISTICAS");
+                    Console.WriteLine("Total evaluados       : " + evaluados);
+                    Console.WriteLine("Publicados            : " + publicados);
+                    Console.WriteLine("Publicados c/ajustes  : " + pubAjustes);
+                    Console.WriteLine("En revision           : " + revision);
+                    Console.WriteLine("Rechazados            : " + rechazados);
+
+                    double porcentaje;
+                    if (evaluados > 0)
+                    {
+                        porcentaje = ((publicados + pubAjustes) * 100.0) / evaluados;
+                        Console.WriteLine("Porcentaje aprobacion : " + porcentaje + "%");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Porcentaje aprobacion : 0%");
+                    }
+
+                    Console.WriteLine("Impactos - Alto: " + impAlto + " | Medio: " + impMedio + " | Bajo: " + impBajo);
+
+                    if (impAlto + impMedio + impBajo > 0)
+                    {
+                        string predominante;
+                        if (impAlto >= impMedio && impAlto >= impBajo)
+                        {
+                            predominante = "Alto";
+                        }
+                        else if (impMedio >= impBajo)
+                        {
+                            predominante = "Medio";
+                        }
+                        else
+                        {
+                            predominante = "Bajo";
+                        }
+                        Console.WriteLine("Impacto predominante  : " + predominante);
+                    }
+                    break;
                     break;
                 case 4:
                     // Reiniciar estadísticas
+                    evaluados = 0;
+                    publicados = 0;
+                    pubAjustes = 0;
+                    revision = 0;
+                    rechazados = 0;
+                    impAlto = 0;
+                    impMedio = 0;
+                    impBajo = 0;
+                    Console.WriteLine("Estadisticas reiniciadas.");
                     break;
                 case 5:
+                case 5:
+                    Console.WriteLine("=== RESUMEN FINAL ===");
+                    Console.WriteLine("Total evaluados       : " + evaluados);
+                    Console.WriteLine("Publicados            : " + publicados);
+                    Console.WriteLine("Publicados c/ajustes  : " + pubAjustes);
+                    Console.WriteLine("En revision           : " + revision);
+                    Console.WriteLine("Rechazados            : " + rechazados);
+
+                    if (evaluados > 0)
+                    {
+                        double porcentajeFinal = ((publicados + pubAjustes) * 100.0) / evaluados;
+                        Console.WriteLine("Porcentaje aprobacion : " + porcentajeFinal + "%");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Porcentaje aprobacion : 0%");
+                    }
+
+                    Console.WriteLine("Impactos - Alto: " + impAlto + " | Medio: " + impMedio + " | Bajo: " + impBajo);
+
+                    if (impAlto + impMedio + impBajo > 0)
+                    {
+                        string predominanteFinal;
+                        if (impAlto >= impMedio && impAlto >= impBajo)
+                        {
+                            predominanteFinal = "Alto";
+                        }
+                        else if (impMedio >= impBajo)
+                        {
+                            predominanteFinal = "Medio";
+                        }
+                        else
+                        {
+                            predominanteFinal = "Bajo";
+                        }
+                        Console.WriteLine("Impacto predominante  : " + predominanteFinal);
+                    }
+
                     Console.WriteLine("Gracias por usar el simulador. Hasta luego.");
+                    break;
                     break;
                 default:
                     Console.WriteLine("Opcion invalida. Ingrese un numero del 1 al 5.");
